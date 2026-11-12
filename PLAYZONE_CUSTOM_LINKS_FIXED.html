@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>PLAYZONE — Games &amp; Movies</title>
+<style>
+:root{--bg:#080b17;--panel:#121a30;--panel2:#1a2542;--line:#2d3b61;--txt:#f4f6ff;--muted:#aab6d3;--a:#8a63ff;--b:#24d9ed}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#22265b 0,transparent 42%),radial-gradient(ellipse at 90% 10%,#123c54 0,transparent 35%),var(--bg);color:var(--txt);font:15px/1.5 system-ui,Arial}
+header{padding:36px 5vw 22px;max-width:1400px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.logo{font-weight:1000;font-size:clamp(30px,5vw,56px);letter-spacing:-3px}.logo span{background:linear-gradient(90deg,var(--b),#bd8cff);background-clip:text;color:transparent}.tagline{color:var(--muted);margin:4px 0 0}.status{border:1px solid #3b4c72;border-radius:99px;padding:7px 12px;color:#c9d3ef;font-size:12px}
+main{max-width:1400px;margin:auto;padding:0 5vw 60px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.search{flex:1;min-width:220px;background:#10182c;border:1px solid var(--line);border-radius:13px;padding:13px 15px;color:white;font-size:15px}.btn,.tab{cursor:pointer;border:1px solid var(--line);background:#131d35;color:var(--txt);border-radius:12px;padding:11px 15px;font-weight:700}.btn.primary,.tab.active{background:linear-gradient(110deg,#7251eb,#3d9de4);border-color:transparent}.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 24px}.hero{border:1px solid #394b75;border-radius:24px;padding:24px;background:linear-gradient(115deg,#30265eaa,#123f56aa);margin:16px 0 28px}.hero h2{font-size:clamp(23px,4vw,36px);margin:0 0 5px}.hero p{margin:0;color:#c3cee8}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:25px 0 13px}.section-head h2{margin:0;font-size:22px}.muted{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:14px}.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:17px;padding:17px;min-height:155px;display:flex;flex-direction:column;transition:.18s}.card:hover{transform:translateY(-3px);border-color:var(--b);box-shadow:0 12px 30px #0005}.emoji{font-size:28px}.card h3{margin:7px 0 3px;font-size:17px}.card p{margin:0;color:var(--muted);font-size:13px;flex:1}.actions{display:flex;gap:7px;margin-top:14px}.actions a,.actions button{font-size:12px;padding:8px 10px;border-radius:9px;border:1px solid #405078;background:#202d4b;color:white;text-decoration:none;cursor:pointer}.actions a:hover,.actions button:hover{border-color:var(--b)}.hidden{display:none!important}.notice{border:1px solid #5d527e;background:#211c3b;color:#d8d1f4;border-radius:14px;padding:14px 16px;margin:20px 0;font-size:13px}.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px}.formbox{background:#10182c;border:1px solid var(--line);border-radius:18px;padding:18px;margin:25px 0}.formbox h3{margin:0 0 12px}.fields{display:grid;grid-template-columns:2fr 1fr 2fr auto;gap:9px}.fields input,.fields select{min-width:0;background:#0b1224;border:1px solid var(--line);border-radius:10px;padding:11px;color:white}footer{text-align:center;color:#7785a8;font-size:12px;padding:20px}
+
+.play-btn{background:linear-gradient(110deg,#7251eb,#168eaf)!important;border-color:transparent!important;font-weight:800}
+@media(max-width:700px){.googlebar{flex-wrap:wrap}.googlebar .search{min-width:100%;order:2}.googlebar button{flex:1}.fields{grid-template-columns:1fr 1fr}.fields input:first-child{grid-column:span 2}.fields button{grid-column:span 2}}
+
+.googlebar{display:flex;align-items:center;gap:10px;padding:12px;background:#10182c;border:1px solid var(--line);border-radius:17px;margin:22px 0 12px}.googlebar .search{border:0;background:transparent;outline:none}.google-mark{font-size:26px;font-weight:1000;color:#8ab4f8;padding:0 8px}.googlebar button{white-space:nowrap}
+.browse-here{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.16);cursor:pointer}.browse-here:hover{filter:brightness(1.15);transform:translateY(-1px)}
+</style></head>
+<body>
+<header><div class="top"><div><div class="logo">⚡ <span>PLAYZONE</span></div><p class="tagline">Your personal launchpad for games, movies &amp; entertainment — all links open right here in this tab.</p></div><div class="status">YOUR HUB · CUSTOMIZABLE</div></div></header>
+<main>
+<div class="hero"><h2>One hub. Big PLAYZONE energy.</h2><p>Play the built-in arcade right here. Movie buttons find official viewing options; outside services open directly when available.</p><div class="status" style="display:inline-block;margin-top:12px">BUILT-IN GAMES WORK WITHOUT EMBEDDING</div></div>
+<form class="googlebar" id="googleForm" role="search" action="https://www.google.com/search" method="get" target="_self">
+ <span class="google-mark">G</span><input class="search" id="googleQuery" name="q" type="search" aria-label="Search Google" placeholder="Search the web with Google…" required autocomplete="off" />
+ <button class="btn primary" type="submit">Google Search</button>
+</form>
+<div class="toolbar"><input aria-label="Search PLAYZONE" class="search" id="search" placeholder="🔎 Search inside PLAYZONE…"/><button class="btn" id="clear">Clear search</button></div>
+<nav class="tabs"><button class="tab active" data-tab="all">✨ Everything</button><button class="tab" data-tab="games">🎮 Games</button><button class="tab" data-tab="movies">🎬 Movies</button><button class="tab" data-tab="video">▶ Videos</button><button class="tab" data-tab="social">📱 Social</button><button class="tab" data-tab="saved">⭐ My links</button></nav>
+<div id="catalog">
+<section data-section="games"><div class="section-head"><h2>🕹️ Play right here</h2><span class="muted">Six mini-games built into PLAYZONE — no outside game site required</span></div><div class="grid">
+<div class="card" data-cat="games" data-name="tic tac toe"><div class="emoji">⭕</div><h3>Tic-Tac-Toe</h3><p>Play a quick two-player game right on this page.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('ttt')">Play Here</button></div></div>
+<div class="card" data-cat="games" data-name="tap challenge reaction clicker"><div class="emoji">⚡</div><h3>Tap Challenge</h3><p>Test how many points you can score in 10 seconds.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('tap')">Play Here</button></div></div>
+<div class="card" data-cat="games" data-name="memory match cards puzzle"><div class="emoji">🧠</div><h3>Memory Match</h3><p>Flip cards and find all matching pairs.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('memory')">Play Here</button></div></div>
+<div class="card" data-cat="games" data-name="snake arcade classic"><div class="emoji">🐍</div><h3>Snake</h3><p>Collect dots, grow longer, and avoid the walls.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('snake')">Play Here</button></div></div>
+<div class="card" data-cat="games" data-name="number guess brain puzzle"><div class="emoji">🔢</div><h3>Number Guess</h3><p>Guess the secret number in as few tries as you can.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('guess')">Play Here</button></div></div>
+<div class="card" data-cat="games" data-name="color match reflex"><div class="emoji">🎨</div><h3>Color Match</h3><p>Quickly choose the color named on screen. Beat your best score.</p><div class="actions"><button class="browse-here" type="button" onclick="openMiniGame('color')">Play Here</button></div></div>
+</div></section>
+<section data-section="games"><div class="section-head"><h2>🎮 PLAYZONE Arcade</h2><span class="muted">Every game below runs right inside this file</span></div><div class="notice">No game website needs to load. Choose a built-in game above to play locally in PLAYZONE.</div></section>
+<section data-section="movies"><div class="section-head"><h2>🎬 Spider-Man movie guide</h2><span class="muted">Find official viewing options</span></div><div class="grid">
+<div class="card" data-cat="movies" data-name="spider-man (2002)"><div class="emoji">🕷️</div><h3>Spider-Man (2002)</h3><p>Tobey Maguire's first Spider-Man film.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man+%282002%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man 2 (2004)"><div class="emoji">🕸️</div><h3>Spider-Man 2 (2004)</h3><p>The second film in Sam Raimi's trilogy.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man+2+%282004%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man 3 (2007)"><div class="emoji">🖤</div><h3>Spider-Man 3 (2007)</h3><p>The third film in the original trilogy.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man+3+%282007%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="the amazing spider-man (2012)"><div class="emoji">🕷️</div><h3>The Amazing Spider-Man (2012)</h3><p>Andrew Garfield's first Spider-Man film.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+The+Amazing+Spider-Man+%282012%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="the amazing spider-man 2 (2014)"><div class="emoji">⚡</div><h3>The Amazing Spider-Man 2 (2014)</h3><p>The follow-up starring Andrew Garfield.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+The+Amazing+Spider-Man+2+%282014%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: homecoming (2017)"><div class="emoji">🏙️</div><h3>Spider-Man: Homecoming (2017)</h3><p>Tom Holland's first solo Spider-Man film.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Homecoming+%282017%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: into the spider-verse (2018)"><div class="emoji">🎨</div><h3>Spider-Man: Into the Spider-Verse (2018)</h3><p>Animated multiverse adventure with Miles Morales.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Into+the+Spider-Verse+%282018%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: far from home (2019)"><div class="emoji">🌍</div><h3>Spider-Man: Far From Home (2019)</h3><p>Peter Parker goes on a school trip abroad.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Far+From+Home+%282019%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: no way home (2021)"><div class="emoji">🌀</div><h3>Spider-Man: No Way Home (2021)</h3><p>A multiverse story featuring Spider-Man.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+No+Way+Home+%282021%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: across the spider-verse (2023)"><div class="emoji">🌌</div><h3>Spider-Man: Across the Spider-Verse (2023)</h3><p>Miles travels across the Spider-Verse.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Across+the+Spider-Verse+%282023%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: brand new day (2026)"><div class="emoji">🕸️</div><h3>Spider-Man: Brand New Day (2026)</h3><p>Check official release and viewing updates.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Brand+New+Day+%282026%29+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+<div class="card" data-cat="movies" data-name="spider-man: beyond the spider-verse"><div class="emoji">⏳</div><h3>Spider-Man: Beyond the Spider-Verse</h3><p>Upcoming animated sequel; check official updates.</p><div class="actions"><a class="browse-here" href="https://www.google.com/search?q=where+to+watch+Spider-Man%3A+Beyond+the+Spider-Verse+official+streaming" target="_self" rel="noopener">Find where to watch</a></div></div>
+</div><div class="notice">PLAYZONE does not stream or embed movies. Each button opens a search for official streaming or rental options in this same tab. Availability depends on your region, subscription, and network rules. No movie player is embedded here.</div></section>
+<section data-section="video"><div class="section-head"><h2>▶️ Videos &amp; streaming</h2></div><div class="grid">
+<div class="card" data-cat="video" data-name="youtube"><div class="emoji">▶️</div><h3>YouTube</h3><p>Videos, creators and official movie listings.</p><div class="actions"><a class="browse-here" href="https://www.youtube.com/" target="_self">Browse Here</a></div></div>
+<div class="card" data-cat="video" data-name="twitch"><div class="emoji">🎥</div><h3>Twitch</h3><p>Live streams and gaming creators.</p><div class="actions"><a class="browse-here" href="https://www.twitch.tv/" target="_self">Browse Here</a></div></div>
+<div class="card" data-cat="video" data-name="tubi"><div class="emoji">🍿</div><h3>Tubi</h3><p>Free ad-supported movies and shows where available.</p><div class="actions"><a class="browse-here" href="https://tubitv.com/" target="_self">Browse Here</a></div></div>
+<div class="card" data-cat="video" data-name="pluto tv"><div class="emoji">📺</div><h3>Pluto TV</h3><p>Free live channels and on-demand shows where available.</p><div class="actions"><a class="browse-here" href="https://pluto.tv/" target="_self">Browse Here</a></div></div>
+</div></section>
+<section data-section="social"><div class="section-head"><h2>📱 Social apps</h2></div><div class="grid">
+<div class="card" data-cat="social" data-name="tiktok"><div class="emoji">♪</div><h3>TikTok</h3><p>Short videos and creators.</p><div class="actions"><a class="browse-here" href="https://www.tiktok.com/" target="_self">Browse Here</a></div></div>
+<div class="card" data-cat="social" data-name="instagram"><div class="emoji">📸</div><h3>Instagram</h3><p>Photos, reels and messages.</p><div class="actions"><a class="browse-here" href="https://www.instagram.com/" target="_self">Browse Here</a></div></div>
+<div class="card" data-cat="social" data-name="discord"><div class="emoji">💬</div><h3>Discord</h3><p>Communities and chats.</p><div class="actions"><a class="browse-here" href="https://discord.com/" target="_self">Browse Here</a></div></div>
+</div></section>
+<section class="hidden" data-section="saved" id="savedSection"><div class="section-head"><h2>⭐ My custom links</h2></div><div class="grid" id="savedGrid"></div></section>
+<div class="formbox"><h3>➕ Add your own game or website</h3><p class="muted">Add a name and one or more http:// or https:// links (one URL per line). Your links appear below. Open Here shows a preview when the site permits it.</p><form class="fields" id="addForm"><input id="linkName" maxlength="50" placeholder="Name (e.g. My game)" required=""/><select id="linkCategory"><option value="games">Game</option><option value="movies">Movie / movie info</option><option value="video">Video</option><option value="social">Social</option></select><textarea id="linkUrl" placeholder="https://example.com
+https://another-game.example" required="" style="min-width:0;background:#0b1224;border:1px solid var(--line);border-radius:10px;padding:11px;color:white;resize:vertical"></textarea><button class="btn primary" type="submit">Add link(s)</button></form><p aria-live="polite" class="muted" id="formMsg"></p></div>
+<div class="notice">Browse Here opens the selected game or movie information page in this same browser tab. Some site owners block other pages from displaying their content inside a hub. The six built-in arcade games run directly in this file and do not need outside game websites. Movie links search for official viewing options; streaming services and network rules still control access. PLAYZONE does not embed outside movie players or bypass restrictions.</div>
+</div>
+</main>
+
+<div id="miniModal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="miniTitle" style="position:fixed;inset:0;z-index:99;background:#030611ed;display:grid;place-items:center;padding:18px">
+ <div style="width:min(560px,100%);background:#121a30;border:1px solid #52638d;border-radius:22px;padding:22px;box-shadow:0 25px 90px #000b">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h2 id="miniTitle" style="margin:0">Mini-game</h2><button class="btn" type="button" onclick="closeMiniGame()">✕ Close</button></div>
+  <div id="miniContent" style="margin-top:18px"></div>
+ </div>
+</div>
+
+<div id="customLinkModal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="customLinkTitle" style="position:fixed;inset:0;z-index:120;background:#030611ed;padding:14px;place-items:center">
+ <div style="width:min(1100px,100%);height:min(820px,94vh);background:#121a30;border:1px solid #52638d;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+   <h2 id="customLinkTitle" style="margin:0;font-size:20px">Your link</h2>
+   <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn primary" id="customOpenDirect" type="button">Open website in this tab</button>
+    <button class="btn" id="customClose" type="button">Close</button>
+   </div>
+  </div>
+  <p class="muted" style="margin:0">If the website owner does not allow embedding, the preview may be blocked. Use “Open website in this tab” to visit the site directly.</p>
+  <iframe id="customLinkFrame" title="Custom website preview" style="width:100%;flex:1;min-height:240px;border:1px solid #405078;border-radius:12px;background:white" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+ </div>
+</div>
+
+<footer>PLAYZONE · Choose Browse Here to open a site in this same tab. Custom links stay in this browser.</footer>
+<script>
+const $=s=>document.querySelector(s);let tab='all';let custom=JSON.parse(localStorage.getItem('playzone-links')||'[]');
+// All Browse Here links deliberately navigate this page; no window.open or new-tab behavior.
+document.addEventListener('click',e=>{const link=e.target.closest('a.browse-here');if(!link)return;e.preventDefault();if(link.href)window.location.href=link.href;});
+function makeCard(item){
+ const d=document.createElement('div');
+ d.className='card'; d.dataset.cat=item.cat; d.dataset.name=item.name.toLowerCase();
+ let safeUrl;
+ try { safeUrl=new URL(item.url); } catch { return null; }
+ if(!['http:','https:'].includes(safeUrl.protocol)) return null;
+ const emoji={games:'🎮',movies:'🎬',video:'▶️',social:'📱'}[item.cat]||'🔗';
+ d.innerHTML=`<div class="emoji">${emoji}</div><h3></h3><p>Custom link added by you.</p><div class="actions"><button class="browse-here" type="button">Open Here</button><button type="button" class="remove-custom">Remove</button></div>`;
+ d.querySelector('h3').textContent=item.name;
+ d.querySelector('.browse-here').onclick=()=>openCustomLink(item.name,safeUrl.href);
+ d.querySelector('.remove-custom').onclick=()=>{custom=custom.filter(x=>x.id!==item.id);save();};
+ return d;
+}
+function save(){localStorage.setItem('playzone-links',JSON.stringify(custom));renderCustom();filter()}
+
+function renderCustom(){const grid=$('#savedGrid');grid.innerHTML='';custom.forEach(item=>{const c=makeCard(item);if(c)grid.append(c)});$('#savedSection').classList.toggle('hidden',tab!=='saved')}
+function filter(){const q=$('#search').value.toLowerCase().trim();document.querySelectorAll('.card').forEach(c=>{const cat=c.dataset.cat;const ok=(tab==='all'||tab==='saved'||tab===cat)&&(`${c.dataset.name} ${c.innerText}`.toLowerCase().includes(q));c.classList.toggle('hidden',!ok)});document.querySelectorAll('[data-section]').forEach(s=>{const name=s.dataset.section;const show=tab==='all'||tab===name||(tab==='saved'&&name==='saved');s.classList.toggle('hidden',!show||(tab!=='saved'&&![...s.querySelectorAll('.card')].some(c=>!c.classList.contains('hidden'))))});}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));renderCustom();filter()}));
+$('#search').addEventListener('input',filter);$('#clear').onclick=()=>{$('#search').value='';filter()};
+// Google search uses the form's native GET action so it works without JavaScript.
+$('#addForm').addEventListener('submit',e=>{e.preventDefault();const urls=$('#linkUrl').value.split(/\s+/).map(x=>x.trim()).filter(Boolean);let added=0;urls.forEach((raw,i)=>{try{const url=new URL(raw);if(!['http:','https:'].includes(url.protocol))return;custom.push({id:Date.now()+i,name:urls.length>1?`${$('#linkName').value.trim()} ${i+1}`:$('#linkName').value.trim(),cat:$('#linkCategory').value,url:url.href});added++}catch{}});if(added){save();$('#formMsg').textContent=`Added ${added} link(s)! Find them under My links.`;e.target.reset()}else{$('#formMsg').textContent='Please paste valid http:// or https:// links.'}});
+renderCustom();filter();
+
+function openMiniGame(which){
+ const modal=document.getElementById('miniModal'), content=document.getElementById('miniContent'), title=document.getElementById('miniTitle');
+ modal.classList.remove('hidden'); modal.style.display='grid';
+ if(which==='ttt'){
+  title.textContent='Tic-Tac-Toe'; let board=Array(9).fill(''), turn='X', done=false;
+  function draw(){content.innerHTML=`<p id="tttStatus" class="muted">Player ${turn}'s turn</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px">${board.map((v,i)=>`<button type="button" data-cell="${i}" style="aspect-ratio:1;border-radius:14px;border:1px solid #52638d;background:#202d4b;color:white;font-size:34px;font-weight:900">${v}</button>`).join('')}</div><button class="btn" style="margin-top:14px" id="tttReset">New game</button>`;
+   content.querySelectorAll('[data-cell]').forEach(b=>b.onclick=()=>{let i=+b.dataset.cell;if(done||board[i])return;board[i]=turn;let wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];let won=wins.some(w=>w.every(n=>board[n]===turn));if(won||board.every(Boolean))done=true;else turn=turn==='X'?'O':'X';draw();if(won)content.querySelector('#tttStatus').textContent=`Player ${turn} wins!`;else if(done)content.querySelector('#tttStatus').textContent='It is a tie!';});
+   content.querySelector('#tttReset').onclick=()=>{board=Array(9).fill('');turn='X';done=false;draw()}; }
+  draw();
+ } else if(which==='memory') {
+  title.textContent='Memory Match'; let symbols=['🍕','🚀','🐱','⚽','🎮','⭐','🍕','🚀','🐱','⚽','🎮','⭐']; symbols.sort(()=>Math.random()-.5); let open=[],matched=new Set(),moves=0;
+  function drawMemory(){content.innerHTML=`<p class=\"muted\">Find all six matching pairs. Moves: ${moves}</p><div style=\"display:grid;grid-template-columns:repeat(4,1fr);gap:8px\">${symbols.map((v,i)=>`<button data-mem=\"${i}\" style=\"aspect-ratio:1;border-radius:12px;border:1px solid #52638d;background:#202d4b;color:white;font-size:26px\">${matched.has(i)||open.includes(i)?v:'❔'}</button>`).join('')}</div><button class=\"btn\" id=\"memReset\" style=\"margin-top:12px\">Restart</button>`;content.querySelectorAll('[data-mem]').forEach(b=>b.onclick=()=>{let i=+b.dataset.mem;if(matched.has(i)||open.includes(i)||open.length===2)return;open.push(i);if(open.length===2){moves++;if(symbols[open[0]]===symbols[open[1]]){open.forEach(x=>matched.add(x));open=[];}else{let pair=[...open];setTimeout(()=>{open=[];drawMemory()},650);drawMemory();return;}}drawMemory();if(matched.size===symbols.length)content.insertAdjacentHTML('afterbegin','<p style=\"color:#7de6ba;font-weight:800\">You matched every pair!</p>')});content.querySelector('#memReset').onclick=()=>{symbols.sort(()=>Math.random()-.5);open=[];matched.clear();moves=0;drawMemory()};}
+  drawMemory();
+ } else if(which==='snake') {
+  title.textContent='Snake';content.innerHTML=`<p class=\"muted\">Use the arrow keys to move. Collect the red dot. Press Restart to play again.</p><canvas id=\"snakeCanvas\" width=320 height=320 style=\"width:min(100%,320px);background:#08111f;border:1px solid #52638d;border-radius:12px;display:block;margin:auto\"></canvas><p id=\"snakeScore\" style=\"text-align:center\">Score: 0</p><div style=\"text-align:center\"><button class=\"btn\" id=\"snakeReset\">Restart</button></div>`;let cv=content.querySelector('canvas'),ctx=cv.getContext('2d'),snake=[{x:8,y:8}],dir={x:1,y:0},food={x:13,y:8},score=0,alive=true;function paint(){ctx.fillStyle='#08111f';ctx.fillRect(0,0,320,320);ctx.fillStyle='#ff5268';ctx.fillRect(food.x*20,food.y*20,18,18);ctx.fillStyle='#45e0c1';snake.forEach(a=>ctx.fillRect(a.x*20,a.y*20,18,18));}function tick(){if(!alive)return;let h={x:snake[0].x+dir.x,y:snake[0].y+dir.y};if(h.x<0||h.y<0||h.x>=16||h.y>=16||snake.some(a=>a.x===h.x&&a.y===h.y)){alive=false;content.querySelector('#snakeScore').textContent='Game over! Score: '+score;return;}snake.unshift(h);if(h.x===food.x&&h.y===food.y){score++;food={x:Math.floor(Math.random()*16),y:Math.floor(Math.random()*16)};content.querySelector('#snakeScore').textContent='Score: '+score}else snake.pop();paint();}let loop=setInterval(tick,150);const key=e=>{let k={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0}}[e.key];if(k&&!(k.x===-dir.x&&k.y===-dir.y)){dir=k;e.preventDefault()}};window.addEventListener('keydown',key);content.querySelector('#snakeReset').onclick=()=>{clearInterval(loop);window.removeEventListener('keydown',key);openMiniGame('snake')};paint();const oldClose=window.closeMiniGame;window.closeMiniGame=function(){clearInterval(loop);window.removeEventListener('keydown',key);oldClose()};
+ } else if(which==='guess') {
+  title.textContent='Number Guess';let answer=Math.floor(Math.random()*50)+1,tries=0;
+  content.innerHTML=`<p class="muted">I'm thinking of a number from 1 to 50. Can you find it?</p><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="guessInput" type="number" min="1" max="50" placeholder="Your guess" style="flex:1;min-width:130px;padding:12px;border-radius:10px;background:#0b1224;color:white;border:1px solid #52638d"><button class="btn primary" id="guessBtn">Guess</button></div><p id="guessMsg" aria-live="polite">Good luck!</p><p id="guessTries" class="muted">Guesses: 0</p><button class="btn" id="guessReset">New number</button>`;
+  const input=content.querySelector('#guessInput'),msg=content.querySelector('#guessMsg'),count=content.querySelector('#guessTries');
+  function reset(){answer=Math.floor(Math.random()*50)+1;tries=0;input.value='';input.disabled=false;content.querySelector('#guessBtn').disabled=false;msg.textContent='New number picked. Good luck!';count.textContent='Guesses: 0'}
+  content.querySelector('#guessBtn').onclick=()=>{const n=Number(input.value);if(!Number.isInteger(n)||n<1||n>50){msg.textContent='Enter a whole number from 1 to 50.';return}tries++;count.textContent='Guesses: '+tries;if(n===answer){msg.textContent='🎉 You got it in '+tries+' guesses!';input.disabled=true;content.querySelector('#guessBtn').disabled=true}else msg.textContent=n<answer?'Too low — try a bigger number!':'Too high — try a smaller number!'};
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')content.querySelector('#guessBtn').click()});content.querySelector('#guessReset').onclick=reset;
+ } else if(which==='color') {
+  title.textContent='Color Match';let score=0,left=20,active=false,timer=null,correct='';const colors=[['RED','#ff5b6e'],['BLUE','#4da3ff'],['GREEN','#4ade80'],['YELLOW','#facc15'],['PURPLE','#c084fc']];
+  content.innerHTML=`<p class="muted">Tap the button matching the color word. You have 20 seconds!</p><div id="colorWord" style="font-size:38px;font-weight:1000;text-align:center;margin:16px"></div><div id="colorChoices" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px"></div><p id="colorInfo" style="text-align:center">Score: 0 · 20 seconds</p><button class="btn primary" id="colorStart">Start</button>`;
+  const word=content.querySelector('#colorWord'),choices=content.querySelector('#colorChoices'),info=content.querySelector('#colorInfo'),start=content.querySelector('#colorStart');
+  function round(){const c=colors[Math.floor(Math.random()*colors.length)];correct=c[0];word.textContent=c[0];word.style.color=c[1];choices.innerHTML='';[...colors].sort(()=>Math.random()-.5).forEach(x=>{const b=document.createElement('button');b.className='btn';b.textContent=x[0];b.style.borderColor=x[1];b.onclick=()=>{if(!active)return;if(x[0]===correct)score++;else score=Math.max(0,score-1);info.textContent=`Score: ${score} · ${left} seconds`;round()};choices.append(b)})}
+  start.onclick=()=>{if(active)return;score=0;left=20;active=true;start.disabled=true;round();timer=setInterval(()=>{left--;info.textContent=`Score: ${score} · ${left} seconds`;if(left<=0){clearInterval(timer);active=false;choices.innerHTML='';word.textContent='TIME!';word.style.color='white';info.textContent='Final score: '+score;start.disabled=false;start.textContent='Play again'}},1000)};
+ } else {
+  title.textContent='10-Second Tap Challenge';let score=0,left=10,timer=null,started=false;
+  content.innerHTML=`<p class="muted">Press Start, then tap as fast as you can before time runs out.</p><div style="font-size:42px;font-weight:900;margin:10px 0" id="tapScore">0</div><p id="tapTime">10 seconds left</p><button class="btn primary" id="tapStart">Start</button> <button class="btn" id="tapHit" disabled> TAP! </button>`;
+  const scoreEl=content.querySelector('#tapScore'),timeEl=content.querySelector('#tapTime'),start=content.querySelector('#tapStart'),hit=content.querySelector('#tapHit');
+  start.onclick=()=>{if(started)return;started=true;start.disabled=true;hit.disabled=false;timer=setInterval(()=>{left--;timeEl.textContent=left+' seconds left';if(left<=0){clearInterval(timer);hit.disabled=true;timeEl.textContent='Time! Final score: '+score;}},1000)};
+  hit.onclick=()=>{if(started&&left>0){score++;scoreEl.textContent=score}};
+ }
+}
+function closeMiniGame(){const m=document.getElementById('miniModal');m.classList.add('hidden');m.style.display='none';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMiniGame()});
+
+
+let activeCustomUrl='';
+function openCustomLink(name,url){
+ activeCustomUrl=url;
+ document.getElementById('customLinkTitle').textContent=name;
+ document.getElementById('customLinkFrame').src=url;
+ const modal=document.getElementById('customLinkModal');
+ modal.classList.remove('hidden'); modal.style.display='grid';
+}
+function closeCustomLink(){
+ const modal=document.getElementById('customLinkModal');
+ modal.classList.add('hidden'); modal.style.display='none';
+ document.getElementById('customLinkFrame').src='about:blank';
+}
+document.getElementById('customClose').addEventListener('click',closeCustomLink);
+document.getElementById('customOpenDirect').addEventListener('click',()=>{
+ if(activeCustomUrl) window.location.assign(activeCustomUrl);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCustomLink()});
+
+</script></body></html>
